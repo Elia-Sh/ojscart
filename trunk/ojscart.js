@@ -1,24 +1,34 @@
 function updateTotal(amount){
-	document.getElementById("totaldiv").innerHTML=amount.toFixed(2);
+	var e = document.getElementById("totaldiv");
+	if (!e)
+		return;
+	e.innerHTML = amount.toFixed(2);
 }
 
 function additemtostore(itemName,itemAmount,itemPicPath,imgAltMsg,id,cartobjName){
-	txt='<div class="souvenirsItem" style="margin-left:25px;width:100px;" id="store'+id+'" name="store'+id+'">';
-	txt+='<div class="souvenirsItemImage" >';
-	txt+='<img src="'+itemPicPath+'" width="73px" height="124px" alt="'+imgAltMsg+'" />';
-	txt+='</div>';
-	txt+='<div class="souvenirsItemDesc">'+itemName+'</div>';
-	txt+='<div class="souvenirsItemCost">'+itemAmount+'$</div>';
-	txt+='<div class="souvenirsAddtocart" onclick="'+cartobjName+'.addItemToCart(\''+itemName+'\',\''+itemAmount+'\',\''+itemPicPath+'\',\''+imgAltMsg+'\',\''+id+'\'); ">Add to Cart</div> </div>';
+	var txt  = '<div class="souvenirsItem" style="margin-left:25px;width:100px;" id="store'+id+'" name="store'+id+'">';
+	txt += '	<div class="souvenirsItemImage" >';
+	txt += '		<img src="'+itemPicPath+'" width="73px" height="124px" alt="'+imgAltMsg+'" />';
+	txt += '	</div>';
+	txt += '	<div class="souvenirsItemDesc">'+itemName+'</div>';
+	txt += '	<div class="souvenirsItemCost">'+itemAmount+'$</div>';
+	txt += '	<div class="souvenirsAddtocart" onclick="'+cartobjName+'.addItemToCart(\''+itemName+'\',\''+itemAmount+'\',\''+itemPicPath+'\',\''+imgAltMsg+'\',\''+id+'\'); ">Add to Cart</div>"';
+	txt += '</div>';
 
-	itxt=document.getElementById('store').innerHTML;
-	itxt+=txt;
-	document.getElementById("store").innerHTML=itxt;
+	itxt  = document.getElementById('store').innerHTML;
+	itxt += txt;
+	
+	var e = document.getElementById("store")
+	if (!e)
+		return;
+	e.innerHTML = itxt;
 }
 
 function clearItem(itemid){
-	x = document.getElementById(itemid);
-	x.parentNode.removeChild(x);
+	var e = document.getElementById(itemid);
+	if (!e)
+		return;
+	e.parentNode.removeChild(x);
 }
 
 function showdiv( id ){
@@ -45,21 +55,24 @@ function cartobj(objname){
 		if (this.itemsCounter>=this.maxItems) {
 			alert( "The Cart Is Full" );
 		} else {
-			txt = '<div class="souvenirsItem" style="margin-left:25px;width:100px;" id="cart'+id+'"><div class="cartItemImage" >';
-			txt += '<img src="' + itemPicPath + '" alt="' + imgAltMsg + '" />';
-			txt += '</div><div class="souvenirsItemDesc">'
-				+ itemName
-				+ '</div><div class="souvenirsItemCost">'
-				+ itemAmount
-				+ '$</div><div class="souvenirsAddtocart" onclick="clearItem(\'cart'+id+'\');'
+// 			txt  = '<div class="souvenirsItem" style="margin-left:25px;width:100px;" id="cart'+id+'">';
+			txt  = '<div class="souvenirsItem" id="cart'+id+'">';
+			txt += '	<div class="cartItemImage" >';
+			txt += '		<img src="' + itemPicPath + '" alt="' + imgAltMsg + '" />';
+			txt += '	</div>';
+			txt += '	<div class="souvenirsItemDesc">' + itemName + '</div>';
+			txt += '	<div class="souvenirsItemCost">' + itemAmount + '$</div>';
+			txt += '	<div class="souvenirsAddtocart" onclick="clearItem(\'cart'+id+'\');'
 				+ this.oName
 				+ '.removeItem(\''
-				+ itemAmount+'\');">Remove</div> </div>';
-			itxt =  document.getElementById("cart").innerHTML;
+				+ itemAmount+'\');">Remove</div>';
+			txt += '</div>';
+			itxt  =  document.getElementById("cart").innerHTML;
 			itxt += txt;
-			document.getElementById("cart").innerHTML=itxt;
+			document.getElementById("cart").innerHTML = itxt;
+			document.getElementById("debug").value = itxt;
 			this.itemsCounter++;
-			this.totalAmount=this.totalAmount+parseFloat(itemAmount);
+			this.totalAmount = this.totalAmount+parseFloat(itemAmount);
 			updateTotal(this.totalAmount);
 		}
 	};
@@ -74,19 +87,19 @@ function cartobj(objname){
 function myShopingCart(tmsg){
 	showdiv('cart');
 	vanishdiv('store');
-	document.getElementById('conheader').innerHTML=tmsg;
-	document.getElementById("backshopingbtn").style.display="block";
+	document.getElementById('conheader').innerHTML = tmsg;
+	document.getElementById("backshopingbtn").style.display = "block";
 	txt="<div onclick='retPaypalCartUploadBtn()'>some Paypal text here<div>";
-	document.getElementById("souvenirsCheckout").innerHTML=retPaypalCartUploadBtn();
+	document.getElementById("souvenirsCheckout").innerHTML = retPaypalCartUploadBtn();
 }
 
 function continueshoping(tmsg) {
 	vanishdiv("cart");
 	showdiv("store");
-	document.getElementById('conheader').innerHTML=tmsg;
-	document.getElementById("backshopingbtn").style.display="none";
+	document.getElementById('conheader').innerHTML = tmsg;
+	document.getElementById("backshopingbtn").style.display = "none";
 	txt='<img src="images/checkout.png" style="border:0;height:20px;width:115px;" onclick="myShopingCart(\'Your Shopping Cart\')" />';
-	document.getElementById("souvenirsCheckout").innerHTML=txt;
+	document.getElementById("souvenirsCheckout").innerHTML = txt;
 }
 
 function retPaypalCartUploadBtn() {

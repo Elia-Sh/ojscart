@@ -2,25 +2,70 @@
 
 <head>
 	<script src="ojscart.js"></script>
+	
+<style>
+#store{
+	background: silver;
+	float: right;
+}
+
+#totaldiv{
+	border: 1px solid black;
+	background: silver;
+	margin-bottom: 20px;
+}
+
+.souvenirsItem{
+	background: #f0f0ff;
+	border: 1px solid yellow;
+	margin-bottom: 10px;
+}
+.souvenirsItem .cartItemImage{
+	float: left;
+}
+.souvenirsItem .souvenirsItemDesc{
+	background: #f0f0f0;
+	font-size: 25px;
+	line-height: 25px;
+	padding: 5px;
+}
+.souvenirsItem .souvenirsItemCost{
+}
+.souvenirsItem .souvenirsAddtocart{
+	border: 1px dotted black;
+	text-align: center;
+	cursor: pointer;
+	clear: both;
+}
+.souvenirsItem .souvenirsAddtocart:hover{
+	border: 1px solid black;
+}
+</style>
 </head>
 
 <body>
 	<div id="totaldiv"></div>
-	<div id="store"></div>
 	<div id="cart"></div>
 	<div id="souvenirsCheckout"></div>
 	<div id="conheader"></div>
 	
-	<input type="button" id="souvenirsCheckout" />
-	<input type="button" id="backshopingbtn" />
+	<div id="store"></div>
+	
+	<input type="button" id="souvenirsCheckout" value="Checkout" />
+	<input type="button" id="backshopingbtn"    value="Back"/>
+	<br />
+	<textarea id="debug" style="width: 100%"></textarea>
+	
+	
 	<script>
 	var cart = new cartobj("cart");
 	
 	// lets debug it a little
-	cart.addItemToCart( "Watch", 200, "http://www.google.co.il/images/nav_logo7.png", "This is not google", 1 );
-	cart.addItemToCart( "Clock", 200, "http://whatsup.co.il/themes/WhatsupNG/images/header_logo.png", "This is not whatsup", 1 );
-	cart.addItemToCart( "PC"   , 100, "http://www.google.co.il/images/nav_logo7.png", "This is not google", 1 );
+	cart.addItemToCart( "Pie", 200, "http://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/FoodApplePie.jpg/120px-FoodApplePie.jpg", "A nice american pic", 1 );
+	cart.addItemToCart( "Hamburger", 200, "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Hamburger_sandwich.jpg/200px-Hamburger_sandwich.jpg", "Not McDonalds - a real one", 2 );
+	cart.addItemToCart( "Fried fish"   , 100, "http://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Fried_Fish_and_French_Fries.jpg/250px-Fried_Fish_and_French_Fries.jpg", "A british fried fish, hold the chips", 3 );
 	</script>
+	
 </body>
 
 </html>
