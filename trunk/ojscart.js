@@ -6,13 +6,15 @@ function updateTotal(amount){
 }
 
 function additemtostore(itemName,itemAmount,itemPicPath,imgAltMsg,id,cartobjName){
-	var txt  = '<div class="souvenirsItem" style="margin-left:25px;width:100px;" id="store'+id+'" name="store'+id+'">';
+// 	var txt  = '<div class="souvenirsItem" style="margin-left:25px;width:100px;" id="store'+id+'" name="store'+id+'">';
+	var txt  = '<div class="souvenirsItem" id="store'+id+'" name="store'+id+'">';
 	txt += '	<div class="souvenirsItemImage" >';
-	txt += '		<img src="'+itemPicPath+'" width="73px" height="124px" alt="'+imgAltMsg+'" />';
+// 	txt += '		<img src="'+itemPicPath+'" width="73px" height="124px" alt="'+imgAltMsg+'" />';
+	txt += '		<img src="'+itemPicPath+'" alt="'+imgAltMsg+'" />';
 	txt += '	</div>';
 	txt += '	<div class="souvenirsItemDesc">'+itemName+'</div>';
 	txt += '	<div class="souvenirsItemCost">'+itemAmount+'$</div>';
-	txt += '	<div class="souvenirsAddtocart" onclick="'+cartobjName+'.addItemToCart(\''+itemName+'\',\''+itemAmount+'\',\''+itemPicPath+'\',\''+imgAltMsg+'\',\''+id+'\'); ">Add to Cart</div>"';
+	txt += '	<div class="souvenirsAddtocart" onclick="'+cartobjName+'.addItemToCart(\''+itemName+'\',\''+itemAmount+'\',\''+itemPicPath+'\',\''+imgAltMsg+'\',\''+id+'\'); ">Add to Cart</div>';
 	txt += '</div>';
 
 	itxt  = document.getElementById('store').innerHTML;
