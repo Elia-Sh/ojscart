@@ -9,7 +9,7 @@ function clearItem(itemid){
 	var e = document.getElementById(itemid);
 	if (!e)
 		return;
-	e.parentNode.removeChild(x);
+	e.parentNode.removeChild(e);
 }
 
 function showdiv( id ){
