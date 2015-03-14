@@ -6,3 +6,5 @@ Automatically exported from code.google.com/p/ojscart
 
 Code license
 GNU GPL v3
+
+Originally created by: Carmit Levy
